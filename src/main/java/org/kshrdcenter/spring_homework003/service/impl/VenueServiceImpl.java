@@ -30,7 +30,7 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public Venue getVenueById(Long venueId) {
+    public Venue getVenueById(Integer venueId) {
         if (venueRepository.getVenueById(venueId) == null) {
             throw new NotFoundException("Cannot find venue with id " + venueId + " !");
         }
@@ -38,7 +38,7 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public Venue updateVenueById(Long venueId, VenueRequest request) {
+    public Venue updateVenueById(Integer venueId, VenueRequest request) {
         if (venueRepository.getVenueById(venueId) == null) {
             throw new NotFoundException("Cannot find venue with id " + venueId + " !");
         }
@@ -46,7 +46,7 @@ public class VenueServiceImpl implements VenueService {
     }
 
     @Override
-    public Venue deleteVenueById(Long venueId) {
+    public Venue deleteVenueById(Integer venueId) {
         if (venueRepository.getVenueById(venueId) == null) {
             throw new NotFoundException("Cannot find venue with id " + venueId + " !");
         }

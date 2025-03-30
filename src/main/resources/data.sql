@@ -54,3 +54,8 @@ VALUES
     (7, 13),
     (7, 10),
     (7, 11);
+
+SELECT * FROM event_attendee sc
+                  INNER JOIN  attendees a
+                              ON sc.attendee_id = a.attendees_id
+WHERE event_id = 7;

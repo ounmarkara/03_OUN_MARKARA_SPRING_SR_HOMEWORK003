@@ -27,20 +27,18 @@ public interface EventRepository {
             RETURNING *; """)
     Events createEvent(@Param("request") EventsRequest request);
 
-
-
     @ResultMap("eventMapper")
     @Select("""
                 SELECT * FROM events
                 WHERE event_id = #{eventId};
             """)
-    Events getEventById(Long eventId);
+    Events getEventById(Integer eventId);
 
     @Select("""
             DELETE FROM events  
             WHERE event_id = #{event_id}
             """)
-    Events deleteEventById(@Param("event_id") Long eventId);
+    Events deleteEventById(@Param("event_id") Integer eventId);
 
     @Insert("INSERT INTO event_attendee(event_id, attendee_id) VALUES (#{eventId}, #{attendeeId})")
     void insertEventAttendee(Integer eventId, Integer attendeeId);
@@ -53,5 +51,12 @@ public interface EventRepository {
                             WHERE event_id = #{event_id}
                             RETURNING *;
             """)
-    Events updateEventById(@Param("event_id") Long eventId, EventsRequest request);
+    Events updateEventById(@Param("event_id") Integer eventId, EventsRequest request);
+
+
+    @Select("""
+            INSERT INTO events VALUES (default, #{req.event_name}, #{req.event_date}, #{req.venue_id})
+            RETURNING *;
+            """)
+    Events insertEvent(@Param("req") EventsRequest request);
 }

@@ -51,7 +51,7 @@ public class VenueController {
 
     @Operation(summary = "Get Venue By ID")
     @GetMapping("/{venue-id}")
-    public ResponseEntity<ApiResponse<Venue>> getVenueById(@PathVariable("venue-id") Long venueId) {
+    public ResponseEntity<ApiResponse<Venue>> getVenueById(@PathVariable("venue-id") Integer venueId) {
         Venue venue = venueService.getVenueById(venueId);
         ApiResponse<Venue> response = ApiResponse.<Venue>builder()
                 .success(true)
@@ -64,7 +64,7 @@ public class VenueController {
     }
     @Operation(summary = "Delete Venue By ID")
     @DeleteMapping("/{venue-id}")
-    public ResponseEntity<ApiResponse<Venue>> deleteVenueById(@PathVariable("venue-id") Long venueId) {
+    public ResponseEntity<ApiResponse<Venue>> deleteVenueById(@PathVariable("venue-id") Integer venueId) {
         Venue venue = venueService.deleteVenueById(venueId);
         ApiResponse<Venue> response = ApiResponse.<Venue>builder()
                 .success(true).message("Delete venue by " + venueId + "Successfully !")
@@ -77,7 +77,7 @@ public class VenueController {
     }
     @Operation(summary = "Update Venue By Id")
     @PutMapping("/{venue-id}")
-    public ResponseEntity<ApiResponse<Venue>> updateVenueById(@PathVariable("venue-id") Long venueId,
+    public ResponseEntity<ApiResponse<Venue>> updateVenueById(@PathVariable("venue-id") Integer venueId,
                                                               @RequestBody VenueRequest request) {
         Venue venue = venueService.updateVenueById(venueId, request);
         ApiResponse<Venue> response = ApiResponse.<Venue>builder()

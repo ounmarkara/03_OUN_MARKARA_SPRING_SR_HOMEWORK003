@@ -52,7 +52,7 @@ public class EventController {
 
     @Operation(summary = "Get Event By Id")
     @GetMapping("/{event-id}")
-    public ResponseEntity<ApiResponse<Events>> getEventById(@PathVariable("event-id") Long eventId) {
+    public ResponseEntity<ApiResponse<Events>> getEventById(@PathVariable("event-id") Integer eventId) {
         Events event = eventService.getEventById(eventId);
         ApiResponse<Events> response = ApiResponse.<Events>builder()
                 .success(true)
@@ -66,7 +66,7 @@ public class EventController {
 
     @Operation(summary = "Delete Event By Id")
     @DeleteMapping("/{event-id}")
-    public ResponseEntity<ApiResponse<Events>> deleteEventById(@PathVariable("event-id") Long event_id) {
+    public ResponseEntity<ApiResponse<Events>> deleteEventById(@PathVariable("event-id") Integer event_id) {
         Events events = eventService.deleteEventById(event_id);
         ApiResponse<Events> response = ApiResponse.<Events>builder()
                 .success(true)
@@ -79,7 +79,7 @@ public class EventController {
 
     @Operation(summary = "Update Event By ID")
     @PutMapping("/{event-id}")
-    public ResponseEntity<ApiResponse<Events>> updateEventById(@PathVariable("event-id") Long eventId, @RequestBody EventsRequest request) {
+    public ResponseEntity<ApiResponse<Events>> updateEventById(@PathVariable("event-id") Integer eventId, @RequestBody EventsRequest request) {
         Events events = eventService.updateEventById(eventId, request);
         ApiResponse<Events> response = ApiResponse.<Events>builder()
                 .success(true)

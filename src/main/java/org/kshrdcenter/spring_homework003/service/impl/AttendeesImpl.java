@@ -31,7 +31,7 @@ public class AttendeesImpl implements AttendeesService {
     }
 
     @Override
-    public Attendees getAttendeeById(Long attendeeId) {
+    public Attendees getAttendeeById(Integer attendeeId) {
         Attendees attendee = attendeesRepository.getAttendeeById(attendeeId);
         if (attendee == null) {
             throw new NotFoundException("Cannot find attendee with id " + attendeeId + " !");
@@ -40,7 +40,7 @@ public class AttendeesImpl implements AttendeesService {
     }
 
     @Override
-    public Attendees updateAttendeeById(Long attendeeId, AttendeesRequest request) {
+    public Attendees updateAttendeeById(Integer attendeeId, AttendeesRequest request) {
         if (attendeesRepository.updateAttendeeById(attendeeId,request) == null) {
             throw new NotFoundException("Cannot find attendee with id " + attendeeId + " !");
         }
@@ -48,7 +48,7 @@ public class AttendeesImpl implements AttendeesService {
     }
 
     @Override
-    public Attendees deleteAttendeeById(Long attendeeId) {
+    public Attendees deleteAttendeeById(Integer attendeeId) {
         if (attendeesRepository.deleteAttendeeById(attendeeId) == null) {
             throw new NotFoundException("Cannot find attendee with id " + attendeeId + " !");
         }

@@ -5,8 +5,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.kshrdcenter.spring_homework003.model.dto.request.AttendeesRequest;
 import org.kshrdcenter.spring_homework003.model.entity.Attendees;
-import org.kshrdcenter.spring_homework003.model.entity.Venue;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -34,7 +32,7 @@ public interface AttendeesRepository {
     SELECT * FROM attendees 
     WHERE attendees_id = #{attendee_id}
 """)
-    Attendees getAttendeeById(@Param("attendee_id") Long attendeeId);
+    Attendees getAttendeeById(@Param("attendee_id") Integer attendeeId);
 
 
     @Select("""
@@ -42,13 +40,13 @@ public interface AttendeesRepository {
         SET attendee_name = #{request.attendee_name}, email = #{request.email}
         WHERE attendees_id = #{attendee_id}
 """)
-    Attendees updateAttendeeById(@Param("attendee_id") Long attendeeId,@Param("request") AttendeesRequest request);
+    Attendees updateAttendeeById(@Param("attendee_id") Integer attendeeId,@Param("request") AttendeesRequest request);
 
     @Select("""
     DELETE FROM attendees
     WHERE attendees_id = #{attendee_id}
 """)
-    Attendees deleteAttendeeById(@Param("attendee_id") Long attendeeId);
+    Attendees deleteAttendeeById(@Param("attendee_id") Integer attendeeId);
 
 
 }

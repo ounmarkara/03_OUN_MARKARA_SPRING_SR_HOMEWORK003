@@ -14,9 +14,9 @@ public interface AttendeesService {
     Attendees createAttendees(AttendeesRequest request);
 
 
-    Attendees getAttendeeById(Long attendeeId);
+    Attendees getAttendeeById(Integer attendeeId);
 
-    Attendees updateAttendeeById(Long attendeeId, AttendeesRequest request);
+    Attendees updateAttendeeById(Integer attendeeId, AttendeesRequest request);
 
-    Attendees deleteAttendeeById(Long attendeeId);
+    Attendees deleteAttendeeById(Integer attendeeId);
 }

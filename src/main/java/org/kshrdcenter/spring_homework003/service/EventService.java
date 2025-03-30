@@ -10,9 +10,9 @@ public interface EventService {
 
     Events createEvent(EventsRequest request);
 
-    Events getEventById(Long eventId);
+    Events getEventById(Integer eventId);
 
-    Events deleteEventById(Long eventId);
+    Events deleteEventById(Integer eventId);
 
-    Events updateEventById(Long eventId, EventsRequest request);
+    Events updateEventById(Integer eventId, EventsRequest request);
 }

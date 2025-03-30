@@ -54,7 +54,7 @@ public class AttendeesController {
 
     @Operation(summary = "Get Attendee By Id")
     @GetMapping("/{attendee-id}")
-    public ResponseEntity<ApiResponse<Attendees>> getAttendeeById(@PathVariable("attendee-id") Long attendeeId) {
+    public ResponseEntity<ApiResponse<Attendees>> getAttendeeById(@PathVariable("attendee-id") Integer attendeeId) {
         Attendees attendees = attendeesService.getAttendeeById(attendeeId);
         ApiResponse<Attendees> response = ApiResponse.<Attendees>builder()
                 .success(true)
@@ -68,7 +68,7 @@ public class AttendeesController {
 
     @Operation(summary = "Update Attendee By ID")
     @PutMapping("/{attendee-id}")
-    public ResponseEntity<ApiResponse<Attendees>> updateAttendeeById(@PathVariable("attendee-id") Long attendeeId, @RequestBody AttendeesRequest request) {
+    public ResponseEntity<ApiResponse<Attendees>> updateAttendeeById(@PathVariable("attendee-id") Integer attendeeId, @RequestBody AttendeesRequest request) {
         Attendees attendees = attendeesService.updateAttendeeById(attendeeId, request);
         ApiResponse<Attendees> response = ApiResponse.<Attendees>builder()
                 .success(true)
@@ -81,7 +81,7 @@ public class AttendeesController {
 
     @Operation(summary = "Delete Attendee By Id")
     @DeleteMapping("/{attendee-id}")
-    public ResponseEntity<ApiResponse<Attendees>> deleteAttendeeById(@PathVariable("attendee-id") Long attendeeId) {
+    public ResponseEntity<ApiResponse<Attendees>> deleteAttendeeById(@PathVariable("attendee-id") Integer attendeeId) {
         Attendees attendees = attendeesService.deleteAttendeeById(attendeeId);
         ApiResponse<Attendees> response = ApiResponse.<Attendees>builder()
                 .success(true)

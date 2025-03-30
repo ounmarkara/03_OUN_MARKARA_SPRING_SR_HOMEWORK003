@@ -2,7 +2,6 @@ package org.kshrdcenter.spring_homework003.repository;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.kshrdcenter.spring_homework003.model.dto.request.VenueRequest;
 import org.kshrdcenter.spring_homework003.model.entity.Venue;
@@ -32,7 +31,7 @@ public interface VenueRepository {
                 SELECT * FROM venues 
                 WHERE venue_id = #{venue_id}
             """)
-    Venue getVenueById(@Param("venue_id") Long venueId);
+    Venue getVenueById(@Param("venue_id") Integer venueId);
 
     @Select("""
                 UPDATE venues
@@ -40,7 +39,7 @@ public interface VenueRepository {
                 WHERE venue_Id = #{venue_id}
                 RETURNING *;
             """)
-    Venue updateVenueById(@Param("venue_id") Long venue_Id, @Param("request") VenueRequest request);
+    Venue updateVenueById(@Param("venue_id") Integer venue_Id, @Param("request") VenueRequest request);
 
 
     @Select("""
@@ -48,5 +47,5 @@ public interface VenueRepository {
                     DELETE FROM venues
                     WHERE venue_id = #{venue_id}
             """)
-    Venue deleteVenueById(@Param("venue_id") Long venueId);
+    Venue deleteVenueById(@Param("venue_id") Integer venueId);
 }

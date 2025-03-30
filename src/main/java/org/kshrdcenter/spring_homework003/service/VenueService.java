@@ -14,10 +14,10 @@ public interface VenueService {
 
     Venue saveVenue(VenueRequest request);
 
-    Venue getVenueById(Long venueId);
+    Venue getVenueById(Integer venueId);
 
 
-    Venue updateVenueById(Long venueId, VenueRequest request);
+    Venue updateVenueById(Integer venueId, VenueRequest request);
 
-    Venue deleteVenueById(Long venueId);
+    Venue deleteVenueById(Integer venueId);
 }
