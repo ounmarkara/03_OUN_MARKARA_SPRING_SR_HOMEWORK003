@@ -42,7 +42,7 @@ public class EventController {
         Events events = eventService.createEvent(request);
         ApiResponse<Events> response = ApiResponse.<Events>builder()
                 .success(true)
-                .message("Saved book successful!")
+                .message("Saved Event successful!")
                 .status(HttpStatus.CREATED)
                 .payload(events)
                 .instant(Instant.now())

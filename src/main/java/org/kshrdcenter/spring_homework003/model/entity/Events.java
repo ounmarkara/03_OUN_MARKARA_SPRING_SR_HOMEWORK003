@@ -17,5 +17,5 @@ public class Events {
     private String event_name;
     private Timestamp event_date;
     private Venue venue;
-    private List <Attendees> attendees;
+    private List <Attendees> attendees    ;
 }

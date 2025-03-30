@@ -22,10 +22,11 @@ public interface EventRepository {
 
 
     @Select("""
-            INSERT INTO events
-            VALUES (default, #{request.event_name}, #{request.event_date}, #{request.attendees_id})
+            INSERT INTO events (event_name, event_date, venue_id)
+            VALUES (#{request.event_name}, #{request.event_date}, #{request.venue_id})
             RETURNING *; """)
-    Events createEvent(EventsRequest request);
+    Events createEvent(@Param("request") EventsRequest request);
+
 
 
     @ResultMap("eventMapper")
@@ -40,6 +41,9 @@ public interface EventRepository {
             WHERE event_id = #{event_id}
             """)
     Events deleteEventById(@Param("event_id") Long eventId);
+
+    @Insert("INSERT INTO event_attendee(event_id, attendee_id) VALUES (#{eventId}, #{attendeeId})")
+    void insertEventAttendee(Integer eventId, Integer attendeeId);
 
 
     @ResultMap("eventMapper")

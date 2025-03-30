@@ -11,16 +11,46 @@ INSERT INTO attendees (attendee_name, email) VALUES
                                                  ('Denzel Washington', 'denzel.w@email.com'),
                                                  ('Robert Downey Jr', 'rdj@email.com'),
                                                  ('Brad Pitt', 'brad.pitt@email.com');
-INSERT INTO events (event_id, event_name, event_date, venue_id) VALUES
-                                                                    (1, 'Tech Conference 2025', '2025-06-15', 2),
-                                                                    (2, 'Music Festival', '2025-07-20', 2);
 
-INSERT INTO event_attendee (event_id, attendees_id) VALUES
-                                                       (2, 3);
+INSERT INTO events (event_name, event_date, venue_id) VALUES
 
-SELECT * FROM event_attendee sc INNER JOIN  attendees a ON sc.attendees_id = a.attendees_id WHERE event_id = 2;
+                                                          ('Music Festival', '2025-05-15 18:30:00', 2),
+                                                          ('Business Summit', '2025-06-20 09:00:00', 3),
+
+                                                          ('AI Workshop', '2025-08-12 16:00:00', 5);
+
+
+
+INSERT INTO event_attendee (event_id, attendee_id) VALUES
+                                                       (1, 101),  -- Attendee 101 at Event 1
+                                                       (1, 102),  -- Attendee 102 at Event 1
+                                                       (2, 103),  -- Attendee 103 at Event 2
+                                                       (3, 104),  -- Attendee 104 at Event 3
+                                                       (4, 105);  -- Attendee 105 at Event 4
+
+
+SELECT * FROM event_attendee sc INNER JOIN  attendees a ON sc.attendee_id = a.attendees_id WHERE event_id = 2;
 
 SELECT sc.attendees_id,attendee_name,email FROM attendees sc
                                                  INNER JOIN  event_attendee a
-                                                             ON sc.attendees_id = a.attendees_id
-WHERE event_id =2 ;
+                                                             ON sc.attendees_id = a.attendee_id
+WHERE event_id =6 ;
+
+SELECT * FROM attendees sc
+                  INNER JOIN  event_attendee a
+                              ON sc.attendees_id = a.attendee_id
+WHERE event_id = 10;
+
+INSERT INTO event_attendee (event_id, attendee_id)
+VALUES
+
+
+    -- Attendees for event 11 (Workshop Series)
+    (6, 6),
+    (6, 7),
+
+    -- Attendees for event 12 (Networking Mixer)
+    (7, 12),
+    (7, 13),
+    (7, 10),
+    (7, 11);
